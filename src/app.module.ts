@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
-import { HealthController } from './health.controller';
+import { HealthModule } from './health/health.module';
 import { UsersModule } from './users/users.module';
 import { ProjectsModule } from './projects/projects.module';
 import { MultiImageTo3dModule } from './multi-image-to-3d/multi-image-to-3d.module';
@@ -14,6 +14,7 @@ import { DatabaseModule } from './database/database.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    HealthModule,
     DatabaseModule,
     UsersModule,
     AuthModule,
@@ -24,6 +25,5 @@ import { DatabaseModule } from './database/database.module';
     MultiImageTo3dModule,
     TextToSketchModule,
   ],
-  controllers: [HealthController],
 })
 export class AppModule {}
