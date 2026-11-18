@@ -14,6 +14,10 @@ export class UsersService {
     return this.prisma.user.findUnique({ where: { id } });
   }
 
+  updateName(id: string, name: string) {
+    return this.prisma.user.update({ where: { id }, data: { name } });
+  }
+
   async create(input: { name: string; email: string; passwordHash: string }) {
     try {
       return await this.prisma.user.create({ data: { ...input, email: input.email.toLowerCase() } });

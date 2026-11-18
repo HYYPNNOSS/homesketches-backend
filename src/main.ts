@@ -27,7 +27,7 @@ async function bootstrap() {
   const swaggerConfig = new DocumentBuilder().setTitle('Sketch Studio API').setDescription('AI-powered architectural generation endpoints').setVersion('1.0').addBearerAuth().build();
   SwaggerModule.setup('docs', app, SwaggerModule.createDocument(app, swaggerConfig));
 
-  await app.listen(process.env.PORT ?? 3000, '0.0.0.0');
+  await app.listen(process.env.PORT ?? 4000, '0.0.0.0');
 }
 
 void bootstrap();

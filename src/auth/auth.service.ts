@@ -35,6 +35,11 @@ export class AuthService {
     return this.toPublicUser(user);
   }
 
+  async updateProfile(userId: string, name: string) {
+    await this.getProfile(userId);
+    return this.toPublicUser(await this.usersService.updateName(userId, name));
+  }
+
   private issueToken(id: string, name: string, email: string) {
     const accessToken = this.jwtService.sign({ sub: id, email });
     return { accessToken, user: { id, name, email } };
